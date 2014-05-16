@@ -503,6 +503,20 @@ background-image: url(../img/vol.jpg);
 background-position:  0px 0px;
 float: left; 
 }
+.pause{
+     width:55px;
+height:55px;
+background-image: url(../img/pause.jpg);
+background-position:  0px 0px;
+float: left; 
+}
+.pause:hover{
+     width:55px;
+height:55px;
+background-image: url(../img/pause.jpg);
+background-position:  0px 55px;
+float: left; 
+}
 #vrange {
     -webkit-appearance: slider-vertical;
     width: 20px;
