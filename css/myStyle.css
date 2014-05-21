@@ -384,7 +384,7 @@ header{
     margin-top: -100px;
 }
 input.test{
-    width:310px;
+    width:425px;
     margin-top: 20px;
     margin-left: 5px;
     float: left;
@@ -434,7 +434,7 @@ float: left;
     padding: 25px;
 }
 #volmenu{
-    width: 55px;
+    width: 105px;
     position: absolute;
     margin-left: 681px;
     margin-top: 55px;
@@ -505,11 +505,12 @@ float: left;
 }
 .pause{
      width:55px;
-height:55px;
-background-image: url(../img/pause.jpg);
-background-position:  0px 0px;
-float: left; 
+    height:55px;
+    background-image: url(../img/pause.jpg);
+    background-position:  0px 0px;
+    float: left; 
 }
+
 .pause:hover{
      width:55px;
 height:55px;
@@ -527,5 +528,12 @@ float: left;
 }
 #comment{
     margin-top: -50px;
+}
+
+.micchosen{
+    cursor: pointer;
+}
+.micchosen:hover{
+    text-decoration: underline;
 }
 

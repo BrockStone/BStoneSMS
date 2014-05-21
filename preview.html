@@ -88,19 +88,15 @@
                      <div id="controls" class="container">
                          <div class="col-lg-8">
                              <!-- PLAY -->
-                             <p class="play playbtn"></p>
+                             <p class="play"></p>
                              <div id="time">
-                                 <p id="timedown">0:00</p>
-                                 <input class="test" type="range"/>
-                                 <p id="timeup">0:00</p>
+                                 <input class="test" type="range" value="0" min='0'/>
                              </div>
                             <!-- PAUSE -->
                              <div class="mic" id="showmenu"></div>
                              <div id="menu" style="display: none; margin-top:55px;">
-                                 <ul>
-                                    <h5>Microphone</h5>
-                                    <li><a href="">Automatic</a></li>
-                                    <li><a href="">Internal</a></li>
+                                 <ul class="micavail">
+                                    <h5>Microphone</h5>  
                                 </ul>
                             </div>
                              <!-- Camera -->
@@ -108,8 +104,7 @@
                             <div id="cammenu" style="display: none; margin-top:55px;">
                                  <ul>
                                     <h5>Camera</h5>
-                                    <li><a href="">Built-In</a></li>
-                                    <li><a href="">External?</a></li>
+                                    <li><a class="camavail" href=""></a></li>
                                 </ul>
                             </div>
                             <!-- RECORD -->
@@ -118,7 +113,7 @@
                             <div class="volume" id="showvol"></div>
                             <div id="volmenu" style="display: none; margin-top:55px;">
                                     <h5>Vol.</h5>
-                                    <input type="range" id="vrange" min="0" max="9" step="1" value="3" />
+                                    <input type="range" class="vol" min="0" max="1" step=".01" value=".05" />
                             </div>
                          </div>
                     </div>
