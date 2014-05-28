@@ -10,6 +10,19 @@ $("#controls").on('click','.pause', function(){
 	console.log("im paused now")
 });
 
+ $('#showmenu').click(function() {
+                $('#menu').slideToggle("fast");
+
+        });
+        $('#showcam').click(function() {
+                $('#cammenu').slideToggle("fast");
+
+        });
+        $('#showvol').click(function() {
+                $('#volmenu').slideToggle("fast");
+
+        });
+
 //Global vars
 var d = Date.now(); // Date int for unique video name 
 var m = 0; // Mic to be used for record (index)
@@ -74,11 +87,7 @@ var flashReady = function()
 		// btnpressed = 'volume';
 	});
 
-	$(".micavail").on('click','.micchosen', function(){
-		
-		m = $(this).val();
-		console.log(m);
-	});
+	// Seek time
 	$('.test').on('mouseup', function(){
 		var b = $(this).val(); // Value on slider
 		var d = b * getDur;
@@ -102,3 +111,74 @@ var connected = function(success)
 		}
 	}	
 }
+
+//Simple Login
+
+// Global Variables for sign in
+var provider, username, password, image;
+
+// Login 	
+$('.login').click(function(){
+	event.preventDefault();
+	provider = $(this).attr('id');
+	console.log(provider);
+
+	// Username and Pass Sign up
+	if(provider == 'signup'){
+		username = $('#username').val();
+		password = $('#password').val();
+		auth.createUser(username, password, function(error, user) {
+				if (!error) {
+					alert('Welcome '+user.username);
+					$('#password').val('');
+				}else{
+					alert(error);
+				}
+			});
+		}
+		else if(provider == 'facebook'){
+			auth.login(provider);
+		}
+});
+
+	
+// DB Reference (https://shinning-fire-8021.firebaseio.com/)
+var myDb = new Firebase('https://shining-fire-8021.firebaseio.com/');
+var auth = new FirebaseSimpleLogin(myDb, function(error, user){
+	if (error) {
+		alert(error);
+	}
+	else if (user) {
+		console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
+		if(user.provider == 'signup'){
+			username = user.username;
+		}
+		else if(user.provider == 'facebook'){
+			username = user.displayName;
+			if(user.provider == 'facebook'){
+				image = 'http://graph.facebook.com/'+user.id+'/picture';
+			}
+		}
+	}
+});
+
+	$('#addComment').on('click', function(){
+		event.preventDefault();
+		var comment = $('#commentInput').val();
+		myDb.push({username: username, comment: comment, image: image});
+		$('#commentInput').val('');
+	});
+
+	myDb.on('child_added', function(snapshot) {
+		var com = snapshot.val();
+		displayChatMessage(com.image, com.username, com.comment);
+	});
+
+	function displayChatMessage(image, username, comment) {
+		$('#commentsDiv').prepend('<img class="user-comment-img" src="'+image+'" alt="'+username+'" height="50" width="50"> <h4strong>'+username+'</h4><br/><p>'+comment+'</p>');
+	};
+
+
+ 
+
+

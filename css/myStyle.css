@@ -536,4 +536,6 @@ float: left;
 .micchosen:hover{
     text-decoration: underline;
 }
-
+#commentsDiv li{
+    text-decoration: none;
+}
